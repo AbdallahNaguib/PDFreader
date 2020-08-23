@@ -3,7 +3,6 @@ package com.example.pdfreader.UI;
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,8 +12,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.pdfreader.DB.DAO.DocumentDAO;
 import com.example.pdfreader.R;
 import com.example.pdfreader.UI.Library.LibraryFragment;
-import com.example.pdfreader.UI.Reader.ReaderFragment;
-import com.example.pdfreader.domain.Document;
 import com.google.android.material.navigation.NavigationView;
 
 import javax.inject.Inject;
@@ -72,19 +69,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .replace(R.id.content, new LibraryFragment())
                     .commit();
         }else if(item.getItemId() == R.id.nav_reader){
-            openDocument(Document.EMPTY);
+
         }
 
         DrawerLayout drawerLayout = findViewById(
                 R.id.drawer_layout);
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
-    }
-
-    public void openDocument(Document document) {
-        navigationView.getMenu().findItem(R.id.nav_reader).setChecked(true);
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content, new ReaderFragment())
-                .commit();
     }
 }

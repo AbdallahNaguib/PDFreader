@@ -92,7 +92,9 @@ public class LibraryFragment extends Fragment {
 
     public void openPdf(Document document){
         Log.d("abcde","openpdf");
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+document.getTitle());
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()+"/"+document.getTitle());
+        Log.d("abcde",file.getAbsolutePath());
+        Log.d("abcde",document.getTitle());
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setDataAndType(FileProvider.getUriForFile(getContext()
                 , getContext()
